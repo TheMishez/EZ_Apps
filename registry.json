@@ -19,7 +19,7 @@
     {
       "id": "cs2-match-tracker",
       "name": "CS2 Match Tracker",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": "EZGGco",
       "description": "See everyone in your match with FACEIT level + Elo, Premier and Leetify ratings, win rate and K/D, plus quick csrep, Leetify and FACEIT buttons. Alt+X to show/hide.",
       "games": [
@@ -33,8 +33,8 @@
         "net",
         "links"
       ],
-      "download": "https://github.com/TheMishez/EZ_Apps/releases/download/cs2-match-tracker-0.1.0/cs2-match-tracker-0.1.0.zip",
-      "sha256": "e63c6b2c05a6a799f0c9f9c68a059588c9e6dde7bf49014dd10da9897aaf0cf2"
+      "download": "https://github.com/TheMishez/EZ_Apps/releases/download/cs2-match-tracker-0.1.1/cs2-match-tracker-0.1.1.zip",
+      "sha256": "a6fffd8b16d62dfa4661537a7dc3ee918aef38db4c918aa6e5d57e6a9cfd20f8"
     },
     {
       "id": "poe2-whispers",
