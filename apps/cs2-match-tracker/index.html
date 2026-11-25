@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="panel">
+    <header>
+      <div class="title"><span class="ez">EZ</span> Match Tracker</div>
+      <div id="match" class="match"></div>
+      <div class="tools">
+        <button id="refresh" title="Refresh (Alt+R)">⟳ Refresh</button>
+        <button id="gear" title="Settings">⚙</button>
+        <button id="hide" title="Hide (Alt+X)">✕</button>
+      </div>
+    </header>
+
+    <div id="notice" class="notice hidden"></div>
+
+    <main id="teams"></main>
+
+    <section id="settings" class="hidden">
+      <h2>Settings</h2>
+      <label>FACEIT API key
+        <input id="faceit-key" type="password" spellcheck="false" placeholder="Server-side key from developers.faceit.com" />
+      </label>
+      <label>Leetify API key <small>(optional, gives higher rate limits)</small>
+        <input id="leetify-key" type="password" spellcheck="false" placeholder="From leetify.com → Settings → API" />
+      </label>
+      <label>csrep profile link <small>({steam64} is replaced with the player's Steam ID)</small>
+        <input id="csrep-url" spellcheck="false" />
+      </label>
+      <div class="row">
+        <button id="save" class="primary">Save</button>
+        <button id="get-faceit" class="link">Get a FACEIT key</button>
+      </div>
+      <p class="hint">Players are read with CS2's <code>status</code> command. Add <code>-netconport 2121</code> to CS2's launch options (Steam → CS2 → Properties).</p>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
