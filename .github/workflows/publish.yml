@@ -1,0 +1,55 @@
+name: Publish apps
+
+# Bump "version" in an app's manifest.json and push: this zips the app,
+# creates a GitHub release for it, and rebuilds registry.json with sha256s.
+on:
+  push:
+    branches: [main]
+    paths: ["apps/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Package new versions and build registry
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/dl /tmp/out
+          echo '[]' > /tmp/entries.json
+          for dir in apps/*/; do
+            m="${dir}manifest.json"
+            id=$(jq -r .id "$m"); ver=$(jq -r .version "$m")
+            if [ "$(basename "$dir")" != "$id" ]; then echo "::error::folder $dir must be named $id"; exit 1; fi
+            tag="$id-$ver"; zip="$tag.zip"
+            if gh release view "$tag" >/dev/null 2>&1; then
+              gh release download "$tag" -p "$zip" -D /tmp/dl --clobber
+              file="/tmp/dl/$zip"
+            else
+              (cd "$dir" && zip -qr -X "/tmp/out/$zip" .)
+              gh release create "$tag" "/tmp/out/$zip" --title "$tag" --notes "$(jq -r .name "$m") $ver"
+              file="/tmp/out/$zip"
+            fi
+            sha=$(sha256sum "$file" | cut -d' ' -f1)
+            url="https://github.com/${GITHUB_REPOSITORY}/releases/download/$tag/$zip"
+            jq --arg url "$url" --arg sha "$sha" \
+              '{id, name, version, author: (.author // ""), description: (.description // ""),
+                games: (.games // []), permissions: (.permissions // []), download: $url, sha256: $sha}' \
+              "$m" > /tmp/e.json
+            jq -s '.[0] + [.[1]]' /tmp/entries.json /tmp/e.json > /tmp/n.json && mv /tmp/n.json /tmp/entries.json
+          done
+          jq '{apps: .}' /tmp/entries.json > registry.json
+
+      - name: Commit registry.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add registry.json
+          git diff --cached --quiet || (git commit -m "Update registry.json" && git push)

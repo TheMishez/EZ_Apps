@@ -1,0 +1,12 @@
+{
+  "id": "poe2-whispers",
+  "name": "PoE2 Trade Whispers",
+  "version": "0.1.0",
+  "author": "EZGGco",
+  "description": "Shows incoming trade whispers on top of PoE2 so you never miss a buyer. Reads Client.txt only.",
+  "entry": "index.html",
+  "games": ["poe2"],
+  "launch": "with-game",
+  "window": { "overlay": true, "width": 380, "height": 220, "clickThrough": true },
+  "permissions": ["poe2.log", "storage"]
+}
