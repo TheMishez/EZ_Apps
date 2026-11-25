@@ -1,7 +1,7 @@
 {
   "id": "cs2-match-tracker",
   "name": "CS2 Match Tracker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "EZGGco",
   "description": "See everyone in your match with FACEIT level + Elo, Premier and Leetify ratings, win rate and K/D, plus quick csrep, Leetify and FACEIT buttons. Alt+X to show/hide.",
   "entry": "index.html",

@@ -18,7 +18,7 @@ If you change an app without bumping its version, nothing is republished; the ex
 | App | Game | What it does |
 |---|---|---|
 | `cs2-hud` | CS2 | Mini HUD with HP, armor, money and round kills (Game State Integration) |
-| `cs2-match-tracker` | CS2 | Everyone in your match with FACEIT level/Elo, Premier + Leetify ratings, win rate, K/D, and csrep/Leetify/FACEIT buttons (Alt+X). Needs launcher 0.2.0+ and `-netconport 2121`. |
+| `cs2-match-tracker` | CS2 | Everyone in your match with FACEIT level/Elo, Premier + Leetify ratings, win rate, K/D, and csrep/Leetify/FACEIT buttons (Alt+X). Needs launcher 0.3.0+ (it sets up CS2 automatically). |
 | `poe2-whispers` | PoE2 | Shows incoming trade whispers over the game |
 
 See the EZ Launcher README for the manifest format and the `window.ez` API.
