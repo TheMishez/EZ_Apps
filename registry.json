@@ -1,1 +1,36 @@
-{ "apps": [] }
+{
+  "apps": [
+    {
+      "id": "cs2-hud",
+      "name": "CS2 Mini HUD",
+      "version": "0.1.0",
+      "author": "EZGGco",
+      "description": "Tiny overlay with your HP, armor, money and round kills, from CS2's official Game State Integration.",
+      "games": [
+        "cs2"
+      ],
+      "permissions": [
+        "cs2.gsi",
+        "hotkeys"
+      ],
+      "download": "https://github.com/TheMishez/EZ_Apps/releases/download/cs2-hud-0.1.0/cs2-hud-0.1.0.zip",
+      "sha256": "e0e2df30c45a30810517e78f39a0f9f98dc4546231c075d321d9012698e3b9ec"
+    },
+    {
+      "id": "poe2-whispers",
+      "name": "PoE2 Trade Whispers",
+      "version": "0.1.0",
+      "author": "EZGGco",
+      "description": "Shows incoming trade whispers on top of PoE2 so you never miss a buyer. Reads Client.txt only.",
+      "games": [
+        "poe2"
+      ],
+      "permissions": [
+        "poe2.log",
+        "storage"
+      ],
+      "download": "https://github.com/TheMishez/EZ_Apps/releases/download/poe2-whispers-0.1.0/poe2-whispers-0.1.0.zip",
+      "sha256": "97f805fef6e8adadfa8565c87af4fa13e4f931ca8fac908799d4c8c87e4ca7a6"
+    }
+  ]
+}
